@@ -77,7 +77,7 @@ function Gallery({ p }: { p: Property }) {
 
   return (
     <div>
-      {/* Fills the frame (object-cover). The watermark is centred, so cropping never hides it. */}
+      {/* Fills the frame (object-cover), anchored to the TOP of the photo so the top is always visible; tap for the full uncropped photo. */}
       <div className="group relative aspect-[4/3] overflow-hidden rounded-xl bg-brand-50 sm:aspect-[16/10]">
         <button
           type="button"
@@ -89,7 +89,7 @@ function Gallery({ p }: { p: Property }) {
             src={imageUrl(images[active]?.url)}
             alt={p.title}
             onError={(e) => (e.currentTarget.src = FALLBACK_IMAGE)}
-            className="size-full object-cover object-right-bottom"
+            className="size-full object-cover object-top"
           />
         </button>
         {p.isSold && <SoldRibbon large label={SOLD_LABEL[p.listingType]} />}
